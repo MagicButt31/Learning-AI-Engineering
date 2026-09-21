@@ -21,9 +21,21 @@ To find basic AI models with Ollama, look here: [https://ollama.com/search](url)
 ### Your First Program
 Now with an AI model installed onto your computer, you can finally start making your first program using Ollama.
 
+Firstly, install the ollama package by doing this:
+```console
+pip install ollama
+```
+
 It should look something like this:
 
 ```python
+import ollama
 
+stream = ollama.chat(
+    model='llama3.2:1b',
+    messages=[{'role': 'user', 'content': "Explain why programmers use 'hello world' in one paragraph."}],
+)
+
+print(stream.message['content'])
 ```
 # W.I.P
