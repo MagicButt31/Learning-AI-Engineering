@@ -16,7 +16,6 @@ After learning all about Python (hopefully you learned about APIs), then it's ti
 To start using AI APIs locally and for free, use Ollama. It lets you install AI APIs directly onto your computer and lets you run them locally. It also has support for Hugging Face models, though it isn't necessary.
 
 To install Ollama, go here: [https://ollama.com/](url)
-To find basic AI models with Ollama, look here: [https://ollama.com/search](url)
 
 ### Your First Program
 Now with an AI model installed onto your computer, you can finally start making your first program using Ollama.
@@ -26,7 +25,9 @@ Firstly, install the ollama package by doing this:
 pip install ollama
 ```
 
-It should look something like this:
+Next after installing the ollama package, install an AI model from here: [https://ollama.com/search](url) 
+
+After that, you can finally write code that calls an AI model (note that you don't need an API key for now). It should look something like this:
 
 ```python
 import ollama
