@@ -8,7 +8,7 @@ stream = ollama.chat(
     messages=[{'role': 'user', 'content': thething}],
 )
 
-print(stream.['message']['content'], end='', flush=True)
+print(stream['message']['content'], end='', flush=True)
 print("\n")
 
 #time finished, now time taken for the response to be generated is calculated

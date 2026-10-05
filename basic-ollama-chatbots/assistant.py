@@ -1,57 +1,3 @@
-# Learning-AI-Engineering
-This is going to show all of my progress on learning AI engineering. On the way, I might just write how to learn all of this on this repository...
-
-## Prereqs
-If you want to start AI engineering, firstly, you should learn basic Python...
-
-Here's some courses and videos that should help you:
-Harvard CS50P: [https://youtube.com/playlist?list=PLhQjrBD2T3817j24-GogXmWqO5Q5vYy0V&si=HmdJFVKQBAmG4hlu](url)
-
-Bro Code's Python Playlist: [https://www.youtube.com/watch?v=Sg4GMVMdOPo&list=PLZPZq0r_RZOOkUQbat8LyQii36cJf2SWT](url)
-
-## Starting with AI APIs
-After learning all about Python (hopefully you learned about APIs), then it's time to start with AI basics.
-
-### Installing Ollama
-To start using AI APIs locally and for free, use Ollama. It lets you install AI APIs directly onto your computer and lets you run them locally. It also has support for Hugging Face models, though it isn't necessary.
-
-To install Ollama, go here: [https://ollama.com/](url)
-
-### Your First Program
-Now with an AI model installed onto your computer, you can finally start making your first program using Ollama.
-
-Firstly, install the ollama package by doing this:
-```console
-pip install ollama
-```
-
-Next after installing the ollama package, install an AI model from here: [https://ollama.com/search](url) 
-
-After that, you can finally write code that calls an AI model (note that you don't need an API key for now). It should look something like this:
-
-```python
-import ollama
-
-stream = ollama.chat(
-    model='llama3.2:1b',
-    messages=[{'role': 'user', 'content': "Explain why programmers use 'hello world' in one paragraph."}],
-)
-
-print(stream.message['content'])
-```
-Now, you have a basic Ollama chatbot. This is where you have officialy started your AI engineering adventure. To continue, follow this: [https://docs.ollama.com/capabilities/streaming](url)
-
-#### A beginner's chatbot...
-Finally, after learning about basic Ollama basics, it's finally time to do one last thing before continuing on.
-
-**Make a chatbot that has memory**
-
-Now this is actually pretty simple. All you do is track what you and the bot said, and then you track it via a nested data structure, which is used in the chat history. Bonus points if you can save the chat history to a file and remove it via a command.
-
-<details>
-<summary>Here is my answer to this problem: </summary>
-
-```python
 import ollama
 import time
 import keyboard
@@ -141,8 +87,3 @@ def clearterminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 main()
-```
-</details>
-So, after creating a basic chatbot that can remember previous chat history, it will be time to move on...
-
-# W.I.P.
