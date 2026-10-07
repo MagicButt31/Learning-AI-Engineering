@@ -4,9 +4,16 @@ import keyboard
 import os
 import json
 
+Bold= "\033[4m"
+Done= "\033[0m"
 ai_model = 'qwen2.5:7b'
 def main():
+    dihmode = False
     clearterminal()
+    with open("ai_response.txt", "a", encoding="utf-8") as file:
+        file.write("")
+    with open("ai_history.json", "a", encoding="utf-8") as file:
+        file.write("")
     with open("ai_history.json", "r", encoding="utf-8") as file:
         totalmessagelist = file.read()
     if totalmessagelist == "":
@@ -25,9 +32,9 @@ def main():
                     break
                 elif ai_inp == "/help":
                     print("""Commands:
-                    /quit: quits the program
-                    /clearhistory: clears response history
-                    /read: reads chat history""")
+/quit: quits the program
+/clearhistory: clears response history
+/read: reads chat history""")
                 elif ai_inp == "/clearhistory":
                     clearterminal()
                     with open("ai_response.txt", "w", encoding="utf-8") as file:
@@ -40,6 +47,13 @@ def main():
                     with open("ai_response.txt", "r", encoding="utf-8") as file:
                         read = file.read()
                     print(read)
+                elif ai_inp == "/dihmode":
+                    if dihmode != True:
+                        print("Dih mode has been enabled")
+                        dihmode = True
+                    else:
+                        print("Dih mode has been disabled")
+                        dihmode = False
                 else:
                     print("Command doesn't exist.")
             else:
@@ -57,7 +71,10 @@ def main():
                 #what stream=True does is lets you see the response being generated in real time
                 #instead of waiting for the entire response to be generated before you see it
                 for chunk in stream: #This loop goes through each chunk of the response as it's generated
-                    print(chunk['message']['content'], end='', flush=True)
+                    if dihmode == True:
+                        print(chunk['message']['content'].replace("de", f"{Bold}dih{Done}").replace("cum", f"{Bold}cum{Done}"), end='', flush=True)
+                    else:
+                        print(chunk['message']['content'], end='', flush=True)
                     response_written.append(chunk['message']['content'])
                     if keyboard.is_pressed('esc'):
                         print("\nResponse has been quitted.")
